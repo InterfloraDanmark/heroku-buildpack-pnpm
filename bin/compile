@@ -43,7 +43,7 @@ install_binaries() {
 
   curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "$BIN_DIR" --skip-shell
   export PATH=$BUILD_DIR/.heroku/bin:$PATH
-  export NODE_OPTIONS=--max_old_space_size=512
+  export NODE_OPTIONS=--max_old_space_size=4096
 
   eval "$(fnm env)"
 
