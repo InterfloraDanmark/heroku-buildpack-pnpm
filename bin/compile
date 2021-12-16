@@ -38,8 +38,8 @@ create_env
 
 ### Install binaries needed for build
 install_binaries() {
-  local node_engine=$(read_json "$BUILD_DIR/package.json" ".engines.node")
-  local npm_engine=$(read_json "$BUILD_DIR/package.json" ".engines.npm")
+  local node_engine=$(read_json "$BUILD_DIR/package.json" ".engines.node" | sed 's/[^0-9]*//g')
+  local npm_engine=$(read_json "$BUILD_DIR/package.json" ".engines.npm" | sed 's/[^0-9]*//g')
 
   curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "$BIN_DIR" --skip-shell
   export PATH=$BUILD_DIR/.heroku/bin:$PATH
