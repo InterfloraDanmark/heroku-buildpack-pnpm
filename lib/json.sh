@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+JQ="/usr/bin/jq"
+
+if ! test -f "$JQ"; then
+  curl -Ls https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 > "/usr/bin/jq" \
+      && chmod +x "/usr/bin/jq"
+fi
 
 json_get_key() {
   local file="$1"
